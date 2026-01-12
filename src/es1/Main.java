@@ -17,21 +17,25 @@ public class Main {
 
         }
         System.out.println(Arrays.toString(arrayDiNumeri));
-        int numero; //fuori dal do se no il while non riesce a leggerlo (consiglio di intelliJ)
+        int numero = 1; //fuori dal do se no il while non riesce a leggerlo (consiglio di intelliJ) 1 così do un valore di default
         do {
-            System.out.println("inserisci un numero da 1 a 10, 0 per terminare");
-            numero = Integer.parseInt(sc.nextLine());
-            if (numero != 0) {
-                try {
+            try {
+                System.out.println("inserisci un numero da 1 a 10, 0 per terminare");
+                numero = Integer.parseInt(sc.nextLine());
+                if (numero != 0) {
+
                     System.out.println("scegli la posizione da 0 a 4");
                     int posizione = Integer.parseInt(sc.nextLine());
                     arrayDiNumeri[posizione] = numero;
                     System.out.println(Arrays.toString(arrayDiNumeri));
-                } catch (ArrayIndexOutOfBoundsException ex) {
-                    System.out.println("scegli una posizione valida, da 0 a 4");
-
                 }
+            } catch (NumberFormatException ex) {
+                System.out.println("inserisci un numero");
+
+            } catch (ArrayIndexOutOfBoundsException ex) {
+                System.out.println("scegli una posizione valida, da 0 a 4");
             }
+
 
         } while (numero != 0);
 
